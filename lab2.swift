@@ -1,46 +1,57 @@
 import Foundation
 
+class BankAccount {
+    var accountNumber: String
+    var accountOwner: String
+    var balance: Double
 
-//Exercise 1
-class BankAccount:
-    def __init__(self, accountNumber, accountOwner, initialBalance):
+    init(accountNumber: String, accountOwner: String, initialBalance: Double) {
         self.accountNumber = accountNumber
         self.accountOwner = accountOwner
         self.balance = initialBalance
+    }
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            print(f"Deposit of ${amount} successful. New balance: ${self.balance}")
-        else:
+    func deposit(amount: Double) {
+        if amount > 0 {
+            balance += amount
+            print("Deposit of $\(amount) successful. New balance: $\(balance)")
+        } else {
             print("Invalid deposit amount. Please enter a positive value.")
+        }
+    }
 
-    def withdraw(self, amount):
-        if amount > 0:
-            if amount <= self.balance:
-                self.balance -= amount
-                print(f"Withdrawal of ${amount} successful. New balance: ${self.balance}")
-            else:
+    func withdraw(amount: Double) {
+        if amount > 0 {
+            if amount <= balance {
+                balance -= amount
+                print("Withdrawal of $\(amount) successful. New balance: $\(balance)")
+            } else {
                 print("Insufficient funds. Withdrawal not allowed.")
-        else:
+            }
+        } else {
             print("Invalid withdrawal amount. Please enter a positive value.")
+        }
+    }
 
-    def getBalance(self):
-        return self.balance
+    func getBalance() -> Double {
+        return balance
+    }
 
-    def displayInfo(self):
-        print(f"Account Number: {self.accountNumber}")
-        print(f"Account Owner: {self.accountOwner}")
-        print(f"Current Balance: ${self.balance}")
+    func displayInfo() {
+        print("Account Number: \(accountNumber)")
+        print("Account Owner: \(accountOwner)")
+        print("Current Balance: $\(balance)")
+    }
+}
 
-
-# Example usage:
-account1 = BankAccount("123456789", "John Doe", 1000.0)
+// Example usage:
+let account1 = BankAccount(accountNumber: "123456789", accountOwner: "John Doe", initialBalance: 1000.0)
 account1.displayInfo()
 
-account1.deposit(500.0)
-account1.withdraw(200.0)
+account1.deposit(amount: 500.0)
+account1.withdraw(amount: 200.0)
 account1.displayInfo()
+
             
 
 //Exercise 2
